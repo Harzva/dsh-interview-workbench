@@ -1,0 +1,6 @@
+# Host owns the shared practice store; agent presets only consume its tools.
+- insert:
+    - id: dsh-interview-workbench
+      name: dsh-interview-workbench
+      config:
+        storagePath: !!js dshHomePath('interview-workbench/practices.json')

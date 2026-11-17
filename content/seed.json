@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "id": "synthetic-release-demo",
+      "repo": "dsh-interview-workbench",
+      "path": "content/seed.json",
+      "title": "合成示例题",
+      "license": "See LICENSE"
+    }
+  ],
+  "questions": [
+    {
+      "id": "demo-algorithm-prefix",
+      "title": "观测队列的区间求和",
+      "prompt": "一个合成观测队列含有 n 个整数。给定多组左闭右开区间 [l, r)，请设计接口返回每段元素之和。说明预处理时间、单次查询时间，并处理 l 等于 r 的情况。",
+      "answer": "建立长度 n+1 的前缀和数组 P，令 P[0]=0 且 P[i+1]=P[i]+a[i]。查询返回 P[r]-P[l]，预处理时间和存储都是 O(n)，单次查询 O(1)。空区间返回 0。",
+      "followUps": ["如果还允许更新单个观测值，会怎样调整数据结构？"],
+      "topic": "数据结构",
+      "tracks": ["ai-algorithm"],
+      "difficulty": "easy",
+      "source": {
+        "id": "synthetic-release-demo",
+        "repo": "dsh-interview-workbench",
+        "path": "content/seed.json",
+        "sourceId": "demo-algorithm-prefix",
+        "commit": null
+      }
+    },
+    {
+      "id": "demo-agent-retry",
+      "title": "为模拟报表任务设计安全重试",
+      "prompt": "一个沙箱内的 Agent 调用报表生成工具。工具可能已保存报表，但响应在返回前超时。说明重试前先查哪些状态，以及如何避免产生重复报表。",
+      "answer": "为每次逻辑任务生成稳定的幂等键，随请求提交。超时后用同一个键查结果；已成功时直接读取已保存的报表。状态未知时仍使用同一键重试，并由服务端保证相同键只创建一份报表。",
+      "followUps": ["如何验证两个并发重试只产生一份报表？"],
+      "topic": "工具调用",
+      "tracks": ["agent-engineer"],
+      "difficulty": "medium",
+      "source": {
+        "id": "synthetic-release-demo",
+        "repo": "dsh-interview-workbench",
+        "path": "content/seed.json",
+        "sourceId": "demo-agent-retry",
+        "commit": null
+      }
+    }
+  ]
+}
